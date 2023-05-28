@@ -8,6 +8,10 @@ import HomeScreen from './New'
 import SignUpScreen from './Details'
 import OturumScreen from './Oturum'
 import ProfileScreen from './Profile'
+import HomePage from './Home'
+import Search from './Search';
+import Fav from './Favourite'
+import Cart from './Cart';
 
 const App = () => {
   return (
@@ -28,6 +32,22 @@ const App = () => {
         <Stack.Screen
           name="Profile"
           component={ProfileScreen}
+        />
+        <Stack.Screen
+          name="Ana Sayfa"
+          component={HomePage}
+        />
+        <Stack.Screen
+          name="Arama"
+          component={Search}
+        />
+        <Stack.Screen
+          name="Favoriler"
+          component={Fav}
+        />
+        <Stack.Screen 
+        name="Sepet"
+        component={Cart}
         />
 
       </Stack.Navigator>

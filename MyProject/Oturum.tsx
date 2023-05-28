@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { View, Image, TextInput, StyleSheet, ScrollView, Button, Alert } from 'react-native'
-
+import { View, Image, TextInput, StyleSheet, ScrollView, Button, ToastAndroid } from 'react-native'
 
 //oturum ac
 
@@ -17,14 +16,11 @@ const Oturum = ({navigation} : {navigation : any}) => {
             }
         })
             .then(function (response) {
-                Alert.alert('Giriş:',"Başarılı")
-                
-            })
-            .then(function (response) {
+                ToastAndroid.show('Giriş Başarılı',ToastAndroid.BOTTOM)
                 navigation.navigate('Profile')
             })
-            
             .catch(function (error) {
+                ToastAndroid.show('Hatalı Giriş',ToastAndroid.BOTTOM)
                 console.log(error);
             })   
     }
@@ -60,17 +56,16 @@ const Oturum = ({navigation} : {navigation : any}) => {
                 autoCapitalize='words'
                 maxLength={20}
                 cursorColor='black'
+                secureTextEntry={true}
             />
             <View style={{ height: 32, width: 100, left: 290, top: 80, flex: 1 }}>
                 <Button
                     title='Giriş Yap'
                     onPress={getUser}
                     color='#f194ff'
-                    
                 />
             </View>
         </ScrollView>
-
     )
 }
 const styles = StyleSheet.create({
