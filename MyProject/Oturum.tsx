@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
 
     }
 })
-
 const styles2 = StyleSheet.create({
     container: {
         flex: 1,

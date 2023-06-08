@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { StyleSheet, SafeAreaView, View, Image, TouchableOpacity, Text, StatusBar } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, SafeAreaView, View, Image, TouchableOpacity, Text, StatusBar, FlatList } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -9,7 +9,6 @@ import Fav from './Favourite'
 import Cart from './Cart'
 
 //profil
-
 const Profile = ({ navigation }: { navigation: any }) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -27,9 +26,9 @@ const Profile = ({ navigation }: { navigation: any }) => {
         { label: 'Din ve Maneviyat', value: 'din' },
         { label: 'Klasikler', value: 'klasik' }
     ]);
-
+    
     const Tabs = createBottomTabNavigator()
-
+    
     return (
         <SafeAreaView style={styles.container}>
             <View style={{ flex: 1 }}>
@@ -45,6 +44,7 @@ const Profile = ({ navigation }: { navigation: any }) => {
                     placeholderStyle={{ fontSize: 13, color: 'white' }}
                     value={value}
                     items={items}
+                    onPress={() => navigation.navigate('Urun')}
                     setOpen={setOpen}
                     setValue={setValue}
                     setItems={setItems}
@@ -54,11 +54,18 @@ const Profile = ({ navigation }: { navigation: any }) => {
                     searchable={true}
                     listMode='MODAL'
                     scrollViewProps={{ nestedScrollEnabled: true }}
+                    
                 />
+                 <FlatList 
+                    data={items}
+                    renderItem={({item})=>( <Text>{item.label}</Text>) }
+                />
+            
             </View>
             <View style={{ flex: 1 }}>
                 <TouchableOpacity onPress={() => navigation.navigate('Oturum Ac')}>
                     <Image
+                    
                         source={{ uri: 'https://assets.materialup.com/uploads/b6c33467-82c3-442c-a2dc-c089bbff9fa1/preview.png' }}
                         style={{ width: 80, height: 58, left: 348, bottom: 167 }}
                         resizeMode="stretch" />

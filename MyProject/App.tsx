@@ -12,6 +12,7 @@ import HomePage from './Home'
 import Search from './Search';
 import Fav from './Favourite'
 import Cart from './Cart';
+import Product from './Product';
 
 const App = () => {
   return (
@@ -48,6 +49,10 @@ const App = () => {
         <Stack.Screen 
         name="Sepet"
         component={Cart}
+        />
+        <Stack.Screen
+        name='Urun'
+        component={Product}
         />
 
       </Stack.Navigator>
